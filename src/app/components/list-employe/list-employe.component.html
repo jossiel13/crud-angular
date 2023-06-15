@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <div class="card border">
+        <div class="card-body mt-4">
+            <span class="h3">LISTADO DE EMPLEADOS</span>
+            <Button class="btn btn-lg btn-secondary float-end" routerLink="/add-employe">Create</Button>
+
+            <table class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th >Name</th>
+                    <th >Last Name</th>
+                    <th >Salary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of userData |async">
+                    <th>{{data.name}}</th>
+                    <td>{{data.lastName}}</td>
+                    <td>{{data.salary |currency}}</td>
+                    <td>
+                      <i class="fa-solid fa-lg fa-pen-to-square text-info" [routerLink]="['/edit-employe/',data.id]"></i>
+                      <i class="fa-solid fa-lg fa-trash text-danger" (click)="deleteData(data.id)"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>
